@@ -1,5 +1,9 @@
 body{
 	color:darkolivegreen;
 	font-family:arial;
-	.dropcap cursive {font-family: cursive;}
+
+}
+
+.dropcap {
+	font-family: cursive;
 }
