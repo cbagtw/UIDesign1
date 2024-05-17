@@ -1,9 +1,14 @@
+
 body{
-	color:darkolivegreen;
-	font-family:arial;
+	color:rosybrown;
+	font-family:copperplate;
 
 }
 
 .dropcap {
 	font-family: cursive;
+	color: saddlebrown;
 }
+
+.wicked { color: darkolivegreen; }
+
