@@ -1,0 +1,178 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Select Players</title> 
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link href="https://fonts.googleapis.com/css2?family=Koulen&display=swap" rel="stylesheet">
+    <style>
+    body, html, *, *::before, *::after, button, button:hover, a, img, input {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'%3E%3Ctext y='50%'%3E%F0%9F%8E%BE%3C/text%3E%3C/svg%3E") 16 0, auto;
+    }
+
+
+    body {
+        background-color: black;
+        color: white;
+        text-align: center;
+        font-family: 'Koulen', sans-serif;
+        height: 100vh;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .container {
+        margin-top: 300px;
+    }
+    .players {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .player-container {
+        position: relative;
+        display: inline-block;
+        margin: 20px 10px;
+    }
+    .players img {
+        width: 90px;
+        height: auto;
+    }
+    .checkmark {
+        position: absolute;
+        top: -8px;
+        left: -8px;
+        width: 87px;
+        height: 87px;
+        background-color: rgba(141, 255, 52, 0.0);
+        border: 9px solid rgba(141, 255, 52, 0.9);
+        border-radius: 50%;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        font-size: 30px;
+        color: white;
+    }
+    .player-container.selected .checkmark {
+        display: flex;
+    }
+    h1 {
+        font-size: 45px;
+        margin-bottom: 30px;
+        color: #8DFF34;
+    }
+    h2 {
+        font-size: 45px;
+        margin-top: 0px;
+    }
+    h1, h2 {
+        line-height: 1.2;
+    }
+    .gameStartBtn {
+        font-family: Koulen;
+        background-color: black;
+        color: white;
+        font-size: 40px;
+        border: none;
+        display: none;
+        padding: 20px 40px;
+        margin-bottom: 20px;
+    }
+    .gameStartBtn:hover {
+        background-color: #8DFF34;
+        color: black;
+    }
+    /* 진동 애니메이션 정의 */
+    @keyframes shake {
+        0% { transform: translateX(0); }
+        10% { transform: translateX(-5px); }
+        20% { transform: translateX(5px); }
+        30% { transform: translateX(-5px); }
+        40% { transform: translateX(5px); }
+        50% { transform: translateX(-5px); }
+        60% { transform: translateX(5px); }
+        70% { transform: translateX(-5px); }
+        80% { transform: translateX(5px); }
+        90% { transform: translateX(-5px); }
+        100% { transform: translateX(0); }
+    }
+
+    /* 클릭 시 진동 애니메이션 적용 */
+    .player-container:active {
+        animation: shake 0.5s;
+    }
+
+    </style>
+</head> 
+<body> 
+
+    <div class="container"> 
+        <h1> GREAT! </h1> 
+        <h2>SELECT PLAYERS</h2> 
+        <div class="players"> 
+            <div class="player-container">
+                <img src="../P2/avatar_image/avatar1.png" alt="Player 1" data-player="1">
+                <div class="checkmark">✔</div>
+            </div>
+            <div class="player-container">
+                <img src="../P2/avatar_image/avatar2.png" alt="Player 2" data-player="2">
+                <div class="checkmark">✔</div>
+            </div>
+            <div class="player-container">
+                <img src="../P2/avatar_image/avatar3.png" alt="Player 3" data-player="3">
+                <div class="checkmark">✔</div>
+            </div>
+            <div class="player-container">
+                <img src="../P2/avatar_image/avatar4.png" alt="Player 4" data-player="4">
+                <div class="checkmark">✔</div>
+            </div>
+            <div class="player-container">
+                <img src="../P2/avatar_image/avatar5.png" alt="Player 5" data-player="5">
+                <div class="checkmark">✔</div>
+            </div>
+            <div class="player-container">
+                <img src="../P2/avatar_image/avatar6.png" alt="Player 6" data-player="6">
+                <div class="checkmark">✔</div>
+            </div>
+            <div class="player-container">
+                <img src="../P2/avatar_image/avatar7.png" alt="Player 7" data-player="7">
+                <div class="checkmark">✔</div>
+            </div>
+            <div class="player-container">
+                <img src="../P2/avatar_image/avatar8.png" alt="Player 8" data-player="8">
+                <div class="checkmark">✔</div>
+            </div>
+        </div> 
+    </div> 
+    <button id="gameStartBtn" class="gameStartBtn">GAME START</button>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const playerContainers = document.querySelectorAll('.player-container');
+        const gameStartBtn = document.getElementById('gameStartBtn');
+        let selectedPlayers = [];
+
+        playerContainers.forEach(container => {
+            container.addEventListener('click', function() {
+                const player = container.querySelector('img').getAttribute('data-player');
+                if (selectedPlayers.includes(player)) {
+                    selectedPlayers = selectedPlayers.filter(p => p !== player);
+                    container.classList.remove('selected');
+                } else if (selectedPlayers.length < 2) {
+                    selectedPlayers.push(player);
+                    container.classList.add('selected');
+                }
+                gameStartBtn.style.display = selectedPlayers.length === 2 ? 'block' : 'none';
+            });
+        });
+    });
+    document.getElementById('gameStartBtn').addEventListener('click', function() {
+            window.location.href = 'score.html';
+        });
+    </script>
+</body> 
+</html>
+

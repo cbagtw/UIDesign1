@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Score Display</title>
+    <style>
+        body {
+            background-color: black;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+        .player-img {
+            width: 90px; /* 이미지 크기 조절 */
+            height: auto;
+        }
+        .love-letter, .love-number {
+            width: 200px;
+            height: auto;
+        }
+        .player-container, .love-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+        .score-img {
+            width: auto;
+            height: auto;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .love-letter {
+            position: absolute;
+            left: 20%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .love-number {
+            position: absolute;
+            right: 15%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    </style>
+</head>
+<body>
+    <div class="player-container" style="margin-left: 20px;">
+        <img src="../P2/avatar_image/avatar1.png" alt="Player 1" class="player-img">
+    </div>
+    <div class="love-container love-letter">
+        <img src="../P2/score_number/love_letter.png" alt="Love Letter" class="love-img">
+    </div>
+    <div class="love-container love-number">
+        <img src="../P2/score_number/love_number.png" alt="Love Number" class="love-img">
+    </div>
+    <img src="../P2/score_number/00.png" alt="Score Number" class="score-img">
+    <div class="player-container" style="margin-right: 20px;">
+        <img src="../P2/avatar_image/avatar5.png" alt="Player 5" class="player-img">
+    </div>
+
+    <script>
+        let loveLetterState = 0;
+        let loveNumberState = 0;
+
+        function changeLoveLetter() {
+            const loveLetterImg = document.querySelector('.love-container.love-letter img');
+            const scoreImg = document.querySelector('.score-img');
+            loveLetterState++;
+
+            switch(loveLetterState) {
+                case 1:
+                    loveLetterImg.src = "../P2/score_number/15.png";
+                    break;
+                case 2:
+                    loveLetterImg.src = "../P2/score_number/30.png";
+                    break;
+                case 3:
+                    loveLetterImg.src = "../P2/score_number/40.png";
+                    break;
+                case 4:
+                    loveLetterImg.src = "../P2/score_number/game.png";
+                    scoreImg.src = "../P2/score_number/10.png";
+                    break;
+                default:
+                    loveLetterState = 0;
+                    changeLoveLetter();
+                    break;
+            }
+        }
+
+        function changeLoveNumber() {
+            const loveNumberImg = document.querySelector('.love-container.love-number img');
+            const scoreImg = document.querySelector('.score-img');
+            loveNumberState++;
+
+            switch(loveNumberState) {
+                case 1:
+                    loveNumberImg.src = "../P2/score_number/15.png";
+                    break;
+                case 2:
+                    loveNumberImg.src = "../P2/score_number/30.png";
+                    break;
+                case 3:
+                    loveNumberImg.src = "../P2/score_number/40.png";
+                    break;
+                case 4:
+                    loveNumberImg.src = "../P2/score_number/game.png";
+                    scoreImg.src = "../P2/score_number/01.png";
+                    break;
+                default:
+                    loveNumberState = 0;
+                    changeLoveNumber();
+                    break;
+            }
+        }
+
+        document.body.addEventListener('click', function(event) {
+            const rect = document.body.getBoundingClientRect();
+            const x = event.clientX - rect.left;
+
+            if(x < window.innerWidth / 2) {
+                changeLoveLetter();
+            } else {
+                changeLoveNumber();
+            }
+        });
+    </script>
+</body>
+</html>
+
+
