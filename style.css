@@ -1,6 +1,6 @@
 
 body{
-	color:rosybrown;
+	color:saddlebrown;
 	font-family:copperplate;
 
 }
@@ -13,11 +13,11 @@ body{
 .wicked { color: darkolivegreen; }
 
 body {
-    background: pink;
+    background: lightgoldenrodyellow;
 }
 
 @media only screen and (max-width: 812px) { 
     body {
-        background: beige;
+        background: lightpink;
     }
 }
