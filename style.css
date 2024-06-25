@@ -1,4 +1,5 @@
 
+
 body{
 	color:saddlebrown;
 	font-family:copperplate;
@@ -8,9 +9,10 @@ body{
 .dropcap {
 	font-family: cursive;
 	color: saddlebrown;
+	
 }
 
-.wicked { color: darkolivegreen; }
+.wicked { color: darkgreen; }
 
 body {
     background: lightgoldenrodyellow;
@@ -20,4 +22,46 @@ body {
     body {
         background: lightpink;
     }
+}
+
+body.dark {
+  background: #333;
+  color: lightgoldenrodyellow;
+
+}
+
+body.dark .dropcap {
+	color: lightgoldenrodyellow;
+	font-family: cursive;
+}
+
+body.dark.wicked {
+	color: springgreen;
+}
+
+h3 + ul li a {
+    color: saddlebrown;
+}
+
+a[href="https://www.chromehearts.com"] {
+    color: saddlebrown;
+    text-shadow: 0px 0px 5px limegreen;
+}
+
+body.dark h3 + ul li a,
+body.dark a[href="https://www.chromehearts.com"] {
+    color: lightgoldenrodyellow;
+}
+
+body.dark .wicked {
+    color: pink;
+}
+
+a, a:visited {
+  transition: all 500ms ease;
+  color: saddlebrown;
+}
+
+a:hover {
+  color: hotpink;  
 }
