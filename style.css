@@ -72,3 +72,28 @@ a:hover {
 body.dark a:hover {
 	color: hotpink;
 }
+/* 다크 모드와 미디어 쿼리 스타일을 함께 적용 */
+@media only screen and (max-width: 812px) {
+    body.dark {
+        background: lightpink; /* 필요한 색상으로 변경 */
+        color: saddlebrown;
+    }
+
+    body.dark .dropcap {
+        color: saddlebrown;
+        font-family: cursive;
+    }
+
+    body.dark .wicked {
+        color: darkgreen;
+    }
+
+    body.dark h3 + ul li a,
+    body.dark a[href="https://www.chromehearts.com"] {
+        color: saddlebrown;
+    }
+
+    body.dark a:hover {
+        color: hotpink;
+    }
+}
