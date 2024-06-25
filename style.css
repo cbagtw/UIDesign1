@@ -25,6 +25,7 @@ li {
     body {
         background: lightpink;
     }
+
 }
 
 body.dark {
@@ -67,4 +68,7 @@ a, a:visited {
 
 a:hover {
   color: hotpink;  
+}
+body.dark a:hover {
+	color: hotpink;
 }
