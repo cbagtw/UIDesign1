@@ -1,12 +1,8 @@
-
-@font-face{
-	font-family: "playwrite";
-
-}
-
+/*@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');*/
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Lexend+Deca:wght@100..900&display=swap');
 body{
 	color:saddlebrown;
-	font-family:copperplate;courier; 
+	font-family:Lexend Deca; Jost; copperplate; courier; 
 
 }
 
